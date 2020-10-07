@@ -8,9 +8,13 @@ window.onload = function () {
   function Process(square) {
     for (var key in dict) {
       if (square == dict[key]) {
+        console.log(boardState);
+        boardState[key] = turn;
+
         if (turn == 1) {
           square.classList.add("X");
           square.innerHTML = "X";
+
           turn = 2;
         } else {
           square.classList.add("O");
@@ -26,6 +30,12 @@ window.onload = function () {
 
     board[i].onclick = function () {
       Process(this);
+    };
+    board[i].onmouseover = function () {
+      this.classList.add("hover");
+    };
+    board[i].onmouseout = function () {
+      this.classList.remove("hover");
     };
     dict[i] = board[i];
   }
