@@ -5,10 +5,11 @@ window.onload = function () {
   var dict = {};
   var boardState = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   var turn = 1;
+  var gameOver = false;
 
   function Process(square) {
     for (var key in dict) {
-      if (square == dict[key]) {
+      if (square == dict[key] && boardState[key] == 0 && gameOver == false) {
         boardState[key] = turn;
 
         if (turn == 1) {
@@ -31,6 +32,7 @@ window.onload = function () {
       ) {
           
           document.getElementById("status").classList.add("you-won");
+          gameOver = true;
 
           if (turn == 1) {
               document
@@ -82,6 +84,6 @@ window.onload = function () {
       document.getElementById("status").innerHTML =
         "Move your mouse over a square and click to play an X or an O.";
     }
-    console.log("c");
+    gameOver = false;
   };
 };
