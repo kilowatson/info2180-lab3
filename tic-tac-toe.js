@@ -68,4 +68,20 @@ window.onload = function () {
     };
     dict[i] = board[i];
   }
+
+  document.getElementsByTagName("button")[0].onclick = function () {
+    for (var i = 0; i < board.length; i++) {
+      if (boardState[i] == 1) {
+        board[i].classList.remove("X");
+      } else if (boardState[i] == 2) {
+        board[i].classList.remove("O");
+      }
+      board[i].innerHTML = "";
+      boardState[i] = 0;
+
+      document.getElementById("status").innerHTML =
+        "Move your mouse over a square and click to play an X or an O.";
+    }
+    console.log("c");
+  };
 };
