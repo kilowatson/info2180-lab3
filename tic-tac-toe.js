@@ -34,6 +34,7 @@ window.onload = function () {
           document.getElementById("status").classList.add("you-won");
           gameOver = true;
 
+          //Checks who won the game and displays the appropiate message
           if (turn == 1) {
               document
                   .getElementById("status")
@@ -56,21 +57,27 @@ window.onload = function () {
     }
   }
 
+  //Adds
   for (var i = 0; i < board.length; i++) {
     board[i].classList.add("square");
 
     board[i].onclick = function () {
       Process(this);
     };
+
+    //Checks if an element is being hovered and adds the class "hover" if so
     board[i].onmouseover = function () {
       this.classList.add("hover");
     };
+    //Checks if an element is n longer being hovered and removes the class "hover" if so
     board[i].onmouseout = function () {
       this.classList.remove("hover");
     };
+
     dict[i] = board[i];
   }
 
+  //Resets the game state
   document.getElementsByTagName("button")[0].onclick = function () {
     for (var i = 0; i < board.length; i++) {
       if (boardState[i] == 1) {
@@ -84,6 +91,7 @@ window.onload = function () {
       document.getElementById("status").innerHTML =
         "Move your mouse over a square and click to play an X or an O.";
     }
+    turn = 1;
     gameOver = false;
   };
 };
